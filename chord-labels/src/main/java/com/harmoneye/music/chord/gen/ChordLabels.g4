@@ -57,5 +57,5 @@ SEPARATOR: ':';
 TIME: [0-9]+ ('.' [0-9]+)?;
 WS_SEP: [ \t];
 
-COMMENT: {getCharPositionInLine()==1}? '#' ~[\r\n]* -> skip;
+COMMENT: {getCharPositionInLine()==0}? '#' ~[\r\n]* -> skip;
 WS: [\n\r]+ -> skip;

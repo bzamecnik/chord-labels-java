@@ -16,11 +16,11 @@ public class ChordLabelsParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__3=1, T__2=2, T__1=3, T__0=4, NATURAL=5, MODIFIER=6, FLAT=7, SHARP=8, 
-		SHORTHAND=9, INTERVAL=10, MISSING=11, NO_CHORD=12, SEPARATOR=13, TIME=14, 
+		INTERVAL=9, SHORTHAND=10, MISSING=11, NO_CHORD=12, SEPARATOR=13, TIME=14, 
 		WS_SEP=15, COMMENT=16, WS=17;
 	public static final String[] tokenNames = {
 		"<INVALID>", "')'", "','", "'('", "'/'", "NATURAL", "MODIFIER", "'b'", 
-		"'#'", "SHORTHAND", "INTERVAL", "'*'", "'N'", "':'", "TIME", "WS_SEP", 
+		"'#'", "INTERVAL", "SHORTHAND", "'*'", "'N'", "':'", "TIME", "WS_SEP", 
 		"COMMENT", "WS"
 	};
 	public static final int
@@ -337,8 +337,8 @@ public class ChordLabelsParser extends Parser {
 						setState(55); components();
 						}
 						break;
-					case SHORTHAND:
 					case INTERVAL:
+					case SHORTHAND:
 						{
 						setState(56); shorthand();
 						setState(58);
@@ -544,7 +544,7 @@ public class ChordLabelsParser extends Parser {
 			{
 			setState(81);
 			_la = _input.LA(1);
-			if ( !(_la==SHORTHAND || _la==INTERVAL) ) {
+			if ( !(_la==INTERVAL || _la==SHORTHAND) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -866,8 +866,8 @@ public class ChordLabelsParser extends Parser {
 		"\2\2\2[Y\3\2\2\2[\\\3\2\2\2\\^\3\2\2\2][\3\2\2\2^_\7\3\2\2_\27\3\2\2\2"+
 		"`b\5\32\16\2a`\3\2\2\2ab\3\2\2\2bc\3\2\2\2cd\5\34\17\2d\31\3\2\2\2ef\7"+
 		"\r\2\2f\33\3\2\2\2gi\5\22\n\2hg\3\2\2\2il\3\2\2\2jh\3\2\2\2jk\3\2\2\2"+
-		"km\3\2\2\2lj\3\2\2\2mn\5\36\20\2n\35\3\2\2\2op\7\f\2\2p\37\3\2\2\2qr\7"+
-		"\6\2\2rs\5\34\17\2s!\3\2\2\2\r%\65<>@CFL[aj";
+		"km\3\2\2\2lj\3\2\2\2mn\5\36\20\2n\35\3\2\2\2op\7\13\2\2p\37\3\2\2\2qr"+
+		"\7\6\2\2rs\5\34\17\2s!\3\2\2\2\r%\65<>@CFL[aj";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
