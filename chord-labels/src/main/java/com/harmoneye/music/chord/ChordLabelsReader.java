@@ -1,18 +1,45 @@
 package com.harmoneye.music.chord;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.harmoneye.music.chord.ChordLabel.Builder;
 import com.harmoneye.music.chord.gen.ChordLabelsBaseListener;
 import com.harmoneye.music.chord.gen.ChordLabelsParser;
 import com.harmoneye.music.chord.gen.ChordLabelsParser.ComponentContext;
-import com.harmoneye.music.chord.gen.ChordLabelsParser.DegreeContext;
 import com.harmoneye.music.chord.gen.ChordLabelsParser.IntervalContext;
 import com.harmoneye.music.chord.gen.ChordLabelsParser.MissingContext;
 
 public class ChordLabelsReader extends ChordLabelsBaseListener {
 
+	private static final int OCTAVE_SIZE = 12;
 	private static final String DEFAULT_SHORTHAND = "maj";
+	private static final Map<String, List<Integer>> SHORTHANDS;
+	static {
+		HashMap<String, List<Integer>> s = new HashMap<String, List<Integer>>();
+		s.put("maj", tones(4, 7));
+		s.put("min", tones(3, 7));
+		s.put("dim", tones(3, 6));
+		s.put("aug", tones(4, 8));
+		s.put("maj7", tones(4, 7, 11));
+		s.put("min7", tones(3, 7, 10));
+		s.put("7", tones(4, 7, 10));
+		s.put("dim7", tones(3, 6, 9));
+		s.put("hdim7", tones(3, 6, 10));
+		s.put("minmaj7", tones(3, 7, 11));
+		s.put("maj6", tones(4, 7, 9));
+		s.put("min6", tones(3, 7, 9));
+		s.put("9", tones(4, 7, 10, 2));
+		s.put("maj9", tones(4, 7, 11, 2));
+		s.put("min9", tones(3, 7, 10, 2));
+		s.put("sus4", tones(5, 7));
+		SHORTHANDS = s;
+	}
 
 	private Builder chordBuilder;
+	private List<ChordLabel> chordLabels = new ArrayList<ChordLabel>();
 
 	/**
 	 * Currently processed pitch class. For root tone it is absolute, for
@@ -29,79 +56,50 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 	 */
 	private boolean shouldAddComponent = true;
 	private boolean anyComponentSpecified = false;
-
-	private ChordLabel chordLabel;
 	
+	private ChordLabel chordLabel;
+
+	public List<ChordLabel> getChordLabels() {
+		return chordLabels;
+	}
+	
+	protected ChordLabel getChordLabel() {
+		return chordLabel;
+	}
+
 	@Override
 	public void enterModifier(ChordLabelsParser.ModifierContext ctx) {
-		System.out.println("enter modifier: " + ctx.getText());
 		pitchClass += pitchClassFromModifier(ctx.getText());
 	}
 
 	@Override
-	public void exitModifier(ChordLabelsParser.ModifierContext ctx) {
-		System.out.println("exit modifier: " + ctx.getText());
-	}
-
-	@Override
 	public void enterShorthand(ChordLabelsParser.ShorthandContext ctx) {
-		System.out.println("enter shorthand: " + ctx.getText());
 		chordBuilder.addShorthand(ctx.getText());
 		anyComponentSpecified = true;
 	}
 
 	@Override
-	public void exitShorthand(ChordLabelsParser.ShorthandContext ctx) {
-		System.out.println("exit shorthand: " + ctx.getText());
-	}
-
-	@Override
-	public void enterRoot(ChordLabelsParser.RootContext ctx) {
-		System.out.println("enter root: " + ctx.getText());
-	}
-
-	@Override
 	public void exitRoot(ChordLabelsParser.RootContext ctx) {
-		System.out.println("exit root: " + ctx.getText());
 		chordBuilder.root(pitchClass);
 	}
 
 	@Override
 	public void enterBass(ChordLabelsParser.BassContext ctx) {
-		System.out.println("enter bass: " + ctx.getText());
 		pitchClass = 0;
 	}
 
 	@Override
 	public void exitBass(ChordLabelsParser.BassContext ctx) {
-		System.out.println("exit bass: " + ctx.getText());
 		chordBuilder.bass(pitchClass);
 	}
 
 	@Override
-	public void enterComponents(ChordLabelsParser.ComponentsContext ctx) {
-		System.out.println("enter components: " + ctx.getText());
-	}
-
-	@Override
-	public void exitComponents(ChordLabelsParser.ComponentsContext ctx) {
-		System.out.println("exit components: " + ctx.getText());
-	}
-
-	@Override
 	public void enterNatural(ChordLabelsParser.NaturalContext ctx) {
-		System.out.println("enter natural: " + ctx.getText());
 		pitchClass = pitchClassFromNatural(ctx.getText());
 	}
 
 	@Override
-	public void exitNatural(ChordLabelsParser.NaturalContext ctx) {
-		System.out.println("exit natural: " + ctx.getText());
-	}
-
-	@Override
 	public void enterComponent(ComponentContext ctx) {
-		System.out.println("enter component: " + ctx.getText());
 		shouldAddComponent = true;
 		pitchClass = 0;
 		anyComponentSpecified = true;
@@ -109,7 +107,6 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 
 	@Override
 	public void exitComponent(ComponentContext ctx) {
-		System.out.println("exit component: " + ctx.getText());
 		if (shouldAddComponent) {
 			chordBuilder.add(pitchClass);
 		} else {
@@ -118,56 +115,29 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 	}
 
 	@Override
-	public void enterDegree(DegreeContext ctx) {
-		System.out.println("enter degree: " + ctx.getText());
-	}
-
-	@Override
-	public void exitDegree(DegreeContext ctx) {
-		System.out.println("exit degree: " + ctx.getText());
-	}
-
-	@Override
 	public void enterInterval(IntervalContext ctx) {
-		System.out.println("enter interval: " + ctx.getText());
 		int interval = Integer.valueOf(ctx.getText());
 		pitchClass += pitchClassFromInterval(interval);
 	}
 
 	@Override
-	public void exitInterval(IntervalContext ctx) {
-		System.out.println("exit interval: " + ctx.getText());
-	}
-
-	@Override
 	public void enterMissing(MissingContext ctx) {
-		System.out.println("enter missing: " + ctx.getText());
 		shouldAddComponent = false;
 	}
 
 	@Override
-	public void exitMissing(MissingContext ctx) {
-		System.out.println("exit missing: " + ctx.getText());
-	}
-
-	@Override
 	public void enterChord(ChordLabelsParser.ChordContext ctx) {
-		System.out.println("enter chord: " + ctx.getText());
-		chordBuilder = Builder.create();
+		chordBuilder = Builder.create(SHORTHANDS, OCTAVE_SIZE);
 		anyComponentSpecified = false;
 	}
 
 	@Override
 	public void exitChord(ChordLabelsParser.ChordContext ctx) {
-		System.out.println("exit chord: " + ctx.getText());
 		if (!anyComponentSpecified) {
 			chordBuilder.addShorthand(DEFAULT_SHORTHAND);
 		}
 		chordLabel = chordBuilder.build();
-	}
-	
-	public ChordLabel getChordLabel() {
-		return chordLabel;
+		chordLabels.add(chordLabel);
 	}
 
 	private int pitchClassFromNatural(String natural) {
@@ -209,16 +179,23 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 		default:
 			throw new IllegalArgumentException(String.valueOf(interval));
 		}
-
 	}
 
 	private int pitchClassFromModifier(String modifier) {
 		if ("b".equals(modifier)) {
-			return 11;
+			return OCTAVE_SIZE - 1;
 		} else if ("#".equals(modifier)) {
 			return 1;
 		}
 		throw new IllegalArgumentException(modifier);
+	}
+
+	private static List<Integer> tones(int... tones) {
+		List<Integer> list = new ArrayList<Integer>();
+		for (Integer tone : tones) {
+			list.add(tone);
+		}
+		return list;
 	}
 
 	private static int modulo(int value, int base) {

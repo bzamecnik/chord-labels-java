@@ -9,6 +9,61 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface ChordLabelsListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#interval}.
+	 * @param ctx the parse tree
+	 */
+	void enterInterval(@NotNull ChordLabelsParser.IntervalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#interval}.
+	 * @param ctx the parse tree
+	 */
+	void exitInterval(@NotNull ChordLabelsParser.IntervalContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#root}.
+	 * @param ctx the parse tree
+	 */
+	void enterRoot(@NotNull ChordLabelsParser.RootContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#root}.
+	 * @param ctx the parse tree
+	 */
+	void exitRoot(@NotNull ChordLabelsParser.RootContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#timedChord}.
+	 * @param ctx the parse tree
+	 */
+	void enterTimedChord(@NotNull ChordLabelsParser.TimedChordContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#timedChord}.
+	 * @param ctx the parse tree
+	 */
+	void exitTimedChord(@NotNull ChordLabelsParser.TimedChordContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#endTime}.
+	 * @param ctx the parse tree
+	 */
+	void enterEndTime(@NotNull ChordLabelsParser.EndTimeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#endTime}.
+	 * @param ctx the parse tree
+	 */
+	void exitEndTime(@NotNull ChordLabelsParser.EndTimeContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#chord}.
+	 * @param ctx the parse tree
+	 */
+	void enterChord(@NotNull ChordLabelsParser.ChordContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#chord}.
+	 * @param ctx the parse tree
+	 */
+	void exitChord(@NotNull ChordLabelsParser.ChordContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ChordLabelsParser#missing}.
 	 * @param ctx the parse tree
 	 */
@@ -18,6 +73,17 @@ public interface ChordLabelsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMissing(@NotNull ChordLabelsParser.MissingContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#startTime}.
+	 * @param ctx the parse tree
+	 */
+	void enterStartTime(@NotNull ChordLabelsParser.StartTimeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#startTime}.
+	 * @param ctx the parse tree
+	 */
+	void exitStartTime(@NotNull ChordLabelsParser.StartTimeContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ChordLabelsParser#modifier}.
@@ -42,17 +108,6 @@ public interface ChordLabelsListener extends ParseTreeListener {
 	void exitDegree(@NotNull ChordLabelsParser.DegreeContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link ChordLabelsParser#interval}.
-	 * @param ctx the parse tree
-	 */
-	void enterInterval(@NotNull ChordLabelsParser.IntervalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ChordLabelsParser#interval}.
-	 * @param ctx the parse tree
-	 */
-	void exitInterval(@NotNull ChordLabelsParser.IntervalContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link ChordLabelsParser#shorthand}.
 	 * @param ctx the parse tree
 	 */
@@ -73,17 +128,6 @@ public interface ChordLabelsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComponent(@NotNull ChordLabelsParser.ComponentContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ChordLabelsParser#root}.
-	 * @param ctx the parse tree
-	 */
-	void enterRoot(@NotNull ChordLabelsParser.RootContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ChordLabelsParser#root}.
-	 * @param ctx the parse tree
-	 */
-	void exitRoot(@NotNull ChordLabelsParser.RootContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link ChordLabelsParser#bass}.
@@ -119,6 +163,17 @@ public interface ChordLabelsListener extends ParseTreeListener {
 	void exitComponents(@NotNull ChordLabelsParser.ComponentsContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ChordLabelsParser#timedChords}.
+	 * @param ctx the parse tree
+	 */
+	void enterTimedChords(@NotNull ChordLabelsParser.TimedChordsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ChordLabelsParser#timedChords}.
+	 * @param ctx the parse tree
+	 */
+	void exitTimedChords(@NotNull ChordLabelsParser.TimedChordsContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ChordLabelsParser#natural}.
 	 * @param ctx the parse tree
 	 */
@@ -128,15 +183,4 @@ public interface ChordLabelsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNatural(@NotNull ChordLabelsParser.NaturalContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link ChordLabelsParser#chord}.
-	 * @param ctx the parse tree
-	 */
-	void enterChord(@NotNull ChordLabelsParser.ChordContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ChordLabelsParser#chord}.
-	 * @param ctx the parse tree
-	 */
-	void exitChord(@NotNull ChordLabelsParser.ChordContext ctx);
 }

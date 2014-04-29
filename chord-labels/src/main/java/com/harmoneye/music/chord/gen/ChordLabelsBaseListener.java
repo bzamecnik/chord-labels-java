@@ -17,6 +17,71 @@ public class ChordLabelsBaseListener implements ChordLabelsListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterInterval(@NotNull ChordLabelsParser.IntervalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInterval(@NotNull ChordLabelsParser.IntervalContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRoot(@NotNull ChordLabelsParser.RootContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRoot(@NotNull ChordLabelsParser.RootContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTimedChord(@NotNull ChordLabelsParser.TimedChordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTimedChord(@NotNull ChordLabelsParser.TimedChordContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEndTime(@NotNull ChordLabelsParser.EndTimeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEndTime(@NotNull ChordLabelsParser.EndTimeContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterChord(@NotNull ChordLabelsParser.ChordContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChord(@NotNull ChordLabelsParser.ChordContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMissing(@NotNull ChordLabelsParser.MissingContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -24,6 +89,19 @@ public class ChordLabelsBaseListener implements ChordLabelsListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitMissing(@NotNull ChordLabelsParser.MissingContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStartTime(@NotNull ChordLabelsParser.StartTimeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStartTime(@NotNull ChordLabelsParser.StartTimeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -56,19 +134,6 @@ public class ChordLabelsBaseListener implements ChordLabelsListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInterval(@NotNull ChordLabelsParser.IntervalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInterval(@NotNull ChordLabelsParser.IntervalContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterShorthand(@NotNull ChordLabelsParser.ShorthandContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -89,19 +154,6 @@ public class ChordLabelsBaseListener implements ChordLabelsListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitComponent(@NotNull ChordLabelsParser.ComponentContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRoot(@NotNull ChordLabelsParser.RootContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRoot(@NotNull ChordLabelsParser.RootContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -147,6 +199,19 @@ public class ChordLabelsBaseListener implements ChordLabelsListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTimedChords(@NotNull ChordLabelsParser.TimedChordsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTimedChords(@NotNull ChordLabelsParser.TimedChordsContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNatural(@NotNull ChordLabelsParser.NaturalContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -154,19 +219,6 @@ public class ChordLabelsBaseListener implements ChordLabelsListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNatural(@NotNull ChordLabelsParser.NaturalContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterChord(@NotNull ChordLabelsParser.ChordContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitChord(@NotNull ChordLabelsParser.ChordContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

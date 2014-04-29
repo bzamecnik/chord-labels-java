@@ -22,14 +22,14 @@
  */
 
 grammar ChordLabels;
-//timeChordRow: (startTime endTime chord)+;
-//
-//startTime: TIME;
-//endTime: TIME;
-//
-//TIME: [0-9]+ ('.' [0-9]+)?;
+timedChords: timedChord*;
+timedChord: startTime WS_SEP endTime WS_SEP chord;
+
+startTime: TIME;
+endTime: TIME;
 
 chords: chord+;
+
 chord: root (SEPARATOR (components | shorthand components?))? bass?	| NO_CHORD;
 root: natural modifier*;
 natural: NATURAL;
@@ -54,5 +54,8 @@ MISSING: '*';
 NO_CHORD: 'N';
 SEPARATOR: ':';
 
+TIME: [0-9]+ ('.' [0-9]+)?;
+WS_SEP: [ \t];
+
 COMMENT: {getCharPositionInLine()==1}? '#' ~[\r\n]* -> skip;
-WS: [ \t\n\r]+ -> skip;
+WS: [\n\r]+ -> skip;
