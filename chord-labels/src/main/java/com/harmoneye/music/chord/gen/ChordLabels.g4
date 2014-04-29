@@ -34,7 +34,7 @@ chord: root (SEPARATOR (components | shorthand components?))? bass?	| NO_CHORD;
 root: natural modifier*;
 natural: NATURAL;
 modifier: MODIFIER;
-shorthand: SHORTHAND;
+shorthand: SHORTHAND | INTERVAL;
 components: '(' component (',' component)* ')';
 component: missing? degree;
 missing: MISSING;
@@ -47,8 +47,9 @@ MODIFIER: FLAT | SHARP;
 FLAT: 'b';
 SHARP: '#';
 INTERVAL: [1-9] | '1' [0-3];
-SHORTHAND: 'maj' | 'min' | 'dim' | 'aug' | 'maj7' | 'min7' | '7' | 'dim7'
-	| 'hdim7' | 'minmaj7' | 'maj6' | 'min6' | '9' | 'maj9' | 'min9' | 'sus4';
+// plain numeric shorthands are already matched to INTERVALs and cannot be reused
+SHORTHAND: 'maj' | 'min' | 'dim' | 'aug' | 'maj7' | 'min7' | 'dim7'
+	| 'hdim7' | 'minmaj7' | 'maj6' | 'min6' | 'maj9' | 'min9' | 'sus4';
 MISSING: '*';
 NO_CHORD: 'N';
 SEPARATOR: ':';
