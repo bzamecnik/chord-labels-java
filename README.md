@@ -3,7 +3,7 @@ chord-labels
 
 MIREX-style chord labels parser based on ANTLR.
 
-It allows to parse symbolic chord labels defined in [1] into POJO (plain old Java objects). More specifically into [pitch class sets](http://en.wikipedia.org/wiki/Set_theory_(music\)‎).
+It allows to parse symbolic chord labels defined in [1] into POJO (plain old Java objects). More specifically into [pitch class sets](http://en.wikipedia.org/wiki/Set_theory_(music)‎).
 
 Examples:
 
