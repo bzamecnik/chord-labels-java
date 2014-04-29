@@ -44,6 +44,26 @@ Examples:
 - As a syntax sugar, a lonely root tone symbol (with no components or a shorthand) is considered to denote the major chord.
 	- Eg. `C` = `C:maj` = `C:(3,5)`
 
+### Extensions
+
+This parser is extended in several ways:
+
+- It allows to parse also timed chord labels in format:
+	- `START_TIME END_TIME CHORD_LABEL`
+	- eg. `6.1260 6.9944 G:maj`
+- It allows line comments. It ignores all lines starting with hash (#).
+
+## API
+
+The API is currently not stable and might change without any notification.
+
+## Author & License
+
+- Bohumir Zamecnik (@bzamecnik](https://twitter.com/bzamecnik))
+- License: MIT (see the [LICENSE](LICENSE) file)
+
+Enjoy and feel free to use and talk about any enhancements/bugs.
+
 ## References
 
 - [1] Harte, C. et al. (2005). [Symbolic representation of musical chords:
