@@ -49,7 +49,7 @@ SHARP: '#';
 INTERVAL: [1-9] | '1' [0-3];
 // plain numeric shorthands are already matched to INTERVALs and cannot be reused
 SHORTHAND: 'maj' | 'min' | 'dim' | 'aug' | 'maj7' | 'min7' | 'dim7'
-	| 'hdim7' | 'minmaj7' | 'maj6' | 'min6' | 'maj9' | 'min9' | 'sus4';
+	| 'hdim7' | 'minmaj7' | 'maj6' | 'min6' | 'maj9' | 'min9' | 'sus4' | 'sus2';
 MISSING: '*';
 NO_CHORD: 'N';
 SEPARATOR: ':';

@@ -35,6 +35,7 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 		s.put("maj9", tones(4, 7, 11, 2));
 		s.put("min9", tones(3, 7, 10, 2));
 		s.put("sus4", tones(5, 7));
+		s.put("sus2", tones(2, 7));
 		SHORTHANDS = s;
 	}
 
@@ -136,6 +137,7 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 		if (!anyComponentSpecified) {
 			chordBuilder.addShorthand(DEFAULT_SHORTHAND);
 		}
+		chordBuilder.title(ctx.getText());
 		chordLabel = chordBuilder.build();
 		chordLabels.add(chordLabel);
 	}
