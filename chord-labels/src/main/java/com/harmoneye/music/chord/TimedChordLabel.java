@@ -59,4 +59,9 @@ public class TimedChordLabel {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "TimedChordLabel [startTime=" + startTime + ", endTime="
+			+ endTime + ", chord=" + chord + "]";
+	}
 }

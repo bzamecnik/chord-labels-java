@@ -11,12 +11,18 @@ public class ChordLabel {
 	private List<Integer> tones;
 	private int root;
 	private int bass;
+	private String title;
 
 	public ChordLabel(List<Integer> tones, int root, int bass) {
+		this(tones, root, bass, "");
+	}
+	
+	public ChordLabel(List<Integer> tones, int root, int bass, String title) {
 		this.tones = new ArrayList<Integer>(new HashSet<Integer>(tones));
 		Collections.sort(this.tones);
 		this.root = root;
 		this.bass = bass;
+		this.title = title;
 	}
 
 	public List<Integer> getTones() {
@@ -29,6 +35,10 @@ public class ChordLabel {
 
 	public int getBass() {
 		return bass;
+	}
+	
+	public String getTitle() {
+		return title;
 	}
 
 	@Override
@@ -65,7 +75,7 @@ public class ChordLabel {
 	@Override
 	public String toString() {
 		return "ChordLabel [tones=" + tones + ", root=" + root + ", bass="
-			+ bass + "]";
+			+ bass + ", title=" + title + "]";
 	}
 
 	public static class Builder {
@@ -75,6 +85,7 @@ public class ChordLabel {
 		private Set<Integer> relativeTones = new HashSet<Integer>();
 		private Integer absRoot;
 		private Integer relativeBass;
+		private String title = "";
 
 		private Builder(Map<String, List<Integer>> shorthands, int octaveSize) {
 			this.shorthands = shorthands;
@@ -115,6 +126,10 @@ public class ChordLabel {
 			}
 		}
 
+		public void title(String title) {
+			this.title = title;
+		}
+		
 		public ChordLabel build() {
 			if (absRoot == null) {
 				absRoot = 0;
@@ -129,7 +144,7 @@ public class ChordLabel {
 				absTones.add(pitchClass(relativeTone + absRoot));
 			}
 			return new ChordLabel(absTones, pitchClass(absRoot),
-				pitchClass(relativeBass + absRoot));
+				pitchClass(relativeBass + absRoot), title);
 		}
 
 		private int pitchClass(int tone) {
