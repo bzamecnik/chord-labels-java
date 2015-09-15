@@ -93,6 +93,7 @@ columns are preserved.
 For example:
 
 ```
+# example file from the Beatles Annotations dataset [4]
 $ export INPUT_FILE=src/test/resources/01-A_Hard_Day_s_Night.lab
 $ grep -v '^#' $INPUT_FILE |head -n 5
 0.0000 2.9632 N
@@ -129,3 +130,4 @@ a proposed syntax for text annotations](http://ismir2005.ismir.net/proceedings/1
 Conference on Music Information Retrieval.
 - [2] Harte, C. (2010). [Towards Automatic Extraction of Harmony Information from Music Signals](https://code.soundsoftware.ac.uk/attachments/download/330/chris_harte_phd_thesis.pdf). PhD. thesis
 - [3] [Ground-truth chord labels for Beatles album annotated by Chris Harte](http://www.ee.columbia.edu/~dpwe/e4896/practicals.html#prac10)
+- [4] [Beatles Annotations](http://isophonics.net/content/reference-annotations-beatles) dataset
