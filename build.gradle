@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+// https://docs.gradle.org/current/userguide/antlr_plugin.html
+// https://docs.gradle.org/current/dsl/org.gradle.api.plugins.antlr.AntlrTask.html
+apply plugin: 'antlr'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+}
+
+repositories {
+	jcenter()
+}
+
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.7'
+}
+
+project.ext {
+	libraries = [:]
+}
+
+libraries.antlr4 = 'org.antlr:antlr4:4.5.1'
+
+dependencies {
+	compile libraries.antlr4
+	antlr libraries.antlr4
+
+	testCompile 'junit:junit:4.10'
+}
+
+def antlrOutput = generateGrammarSource.outputDirectory
+
+
+sourceSets.main.java {
+	srcDir antlrOutput
+}
+
+idea.module {
+	sourceDirs += file(antlrOutput)
+	generatedSourceDirs += file(antlrOutput)
+	excludeDirs -= file(buildDir)
+	buildDir.listFiles({d, f -> f != "generated-src"} as FilenameFilter).each {excludeDirs += it}
+}

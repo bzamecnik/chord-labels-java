@@ -1,8 +1,0 @@
-.settings/
-/bin/
-/build/
-/target/
-/lib/
-.classpath
-.project
-*.dmg

@@ -13,3 +13,19 @@ hs_err_pid*
 
 .metadata
 .DS_Store
+
+*.iml
+*.ipr
+*.iws
+
+.settings/
+/bin/
+/build/
+/target/
+/lib/
+.classpath
+.project
+*.dmg
+.idea/
+.gradle/
+__pycache__

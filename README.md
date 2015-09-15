@@ -53,7 +53,33 @@ This parser is extended in several ways:
 	- eg. `6.1260 6.9944 G:maj`
 - It allows line comments. It ignores all lines starting with hash (#).
 
-## API
+## How to build and use?
+
+### Build a JAR
+
+```
+$ ./gradlew jar
+$ ls build/libs/chord-labels-*.jar
+```
+
+### Examples
+
+```
+String chordString = "E:7";
+ChordLabel chordLabel = new ChordLabels().parseChord(chordString);
+// ChordLabel [tones=[2, 4, 8, 11], root=4, bass=4, title=E:7]
+
+String chordString = "0.000 2.123 C:min7\n"
+ + "2.500 3.456 D:maj\n"
+ + "4.0 5.000 E:maj7";
+List<TimedChordLabel> chordLabels = new ChordLabels()
+	.parseTimedChords(chordString);
+// TimedChordLabel [startTime=0.0, endTime=2.123, chord=ChordLabel [tones=[0, 3, 7, 10], root=0, bass=0, title=C:min7]]
+// TimedChordLabel [startTime=2.5, endTime=3.456, chord=ChordLabel [tones=[2, 6, 9], root=2, bass=2, title=D:maj]]
+// TimedChordLabel [startTime=4.0, endTime=5.0, chord=ChordLabel [tones=[3, 4, 8, 11], root=4, bass=4, title=E:maj7]]
+```
+
+### API
 
 The API is currently not stable and might change without any notification.
 
