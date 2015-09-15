@@ -14,21 +14,6 @@ import java.util.List;
 
 public class ChordLabels {
 
-	// DEMO:
-	// converts timed symbolic chord labels to explicit pitch class set label
-	public static void main(String[] args) throws FileNotFoundException {
-		String fileName = args[0];
-		InputStreamReader reader = new InputStreamReader(new FileInputStream(
-			fileName));
-		List<TimedChordLabel> labels = new ChordLabels()
-			.parseTimedChords(reader);
-		for (TimedChordLabel label : labels) {
-			System.out.print(label.getStartTime());
-			System.out.print(" " + label.getEndTime());
-			System.out.println(" " + label.getChordLabel().getTones());
-		}
-	}
-
 	public ChordLabel parseChord(String chord) {
 		List<ChordLabel> chords = parseChords(chord);
 		return chords.get(0);

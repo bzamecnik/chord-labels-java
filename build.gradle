@@ -3,6 +3,7 @@ apply plugin: 'idea'
 // https://docs.gradle.org/current/userguide/antlr_plugin.html
 // https://docs.gradle.org/current/dsl/org.gradle.api.plugins.antlr.AntlrTask.html
 apply plugin: 'antlr'
+apply plugin: 'application'
 
 buildscript {
 	repositories {
@@ -44,4 +45,17 @@ idea.module {
 	generatedSourceDirs += file(antlrOutput)
 	excludeDirs -= file(buildDir)
 	buildDir.listFiles({d, f -> f != "generated-src"} as FilenameFilter).each {excludeDirs += it}
+}
+
+run {
+    if (project.hasProperty('file')){
+        args(file)
+    }
+    main = 'com.harmoneye.music.chord.ChordLabelsToPitchClassesApp'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.harmoneye.music.chord.ChordLabelsToPitchClassesApp'
+    }
 }

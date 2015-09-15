@@ -79,6 +79,19 @@ List<TimedChordLabel> chordLabels = new ChordLabels()
 // TimedChordLabel [startTime=4.0, endTime=5.0, chord=ChordLabel [tones=[3, 4, 8, 11], root=4, bass=4, title=E:maj7]]
 ```
 
+### Converting chord labels to binary pitch class sets
+
+```
+# invokes ./gradlew -q run -Pfile=$1
+$ sh labels_to_pitch_class_sets.sh src/test/resources/01-A_Hard_Day_s_Night.lab 
+start	end	root	bass	C	Db	D	Eb	E	F	Gb	G	Ab	A	Bb	B
+0.0	2.9632	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+2.9632	6.126	7	7	1	0	1	0	0	1	0	1	0	0	0	0
+[...]
+143.9829	151.7163	5	5	1	0	0	0	0	1	0	1	0	1	0	0
+151.7163	155.342	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+```
+
 ### API
 
 The API is currently not stable and might change without any notification.

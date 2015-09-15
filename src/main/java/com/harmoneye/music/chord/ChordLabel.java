@@ -24,6 +24,15 @@ public class ChordLabel {
 		return tones;
 	}
 
+    // eg. [0, 4, 7, 11] - > [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1]
+	public List<Integer> getTonesAsBinarySet() {
+        List<Integer> binaryTones = new ArrayList<Integer>();
+        for (int i = 0; i < 12; i++) {
+            binaryTones.add(tones.contains(i) ? 1 : 0);
+        }
+		return binaryTones;
+	}
+
 	public int getRoot() {
 		return root;
 	}
