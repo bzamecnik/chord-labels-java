@@ -93,8 +93,17 @@ columns are preserved.
 For example:
 
 ```
+$ export INPUT_FILE=src/test/resources/01-A_Hard_Day_s_Night.lab
+$ grep -v '^#' $INPUT_FILE |head -n 5
+0.0000 2.9632 N
+2.9632 6.1260 G:sus4(b7)
+6.1260 6.9944 G
+6.9944 7.8364 C
+7.8364 9.5203 G
+
 # invokes ./gradlew -q run -Pfile=$1
-$ sh add_pitch_class_sets.sh |head -n 5
+
+$ sh add_pitch_class_sets.sh $INPUT_FILE |head -n 5
 start	end	label	root	bass	C	Db	D	Eb	E	F	Gb	G	Ab	A	Bb	B
 0.0	2.9632	N	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 2.9632	6.126	G:sus4(b7)	7	7	1	0	1	0	0	1	0	1	0	0	0	0
