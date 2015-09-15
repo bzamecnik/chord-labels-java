@@ -81,15 +81,25 @@ List<TimedChordLabel> chordLabels = new ChordLabels()
 
 ### Converting chord labels to binary pitch class sets
 
+This CLI app convert a TSV file timed chord labels by appending columns with
+binary pitch class set, root and bass parsed from each label. This might be
+useful for further processing of the chord segments, eg. via machine learning.
+Compared to the original TSV file the separator is tab (not any whitespace),
+there's an added header and added columns for root, bass and each pitch class.
+The root and bass are integer pitch classes (based on C), the values for further
+columns are just binary indicators represented as 0 or 1. The start and end time
+columns are preserved.
+
+For example:
+
 ```
 # invokes ./gradlew -q run -Pfile=$1
-$ sh labels_to_pitch_class_sets.sh src/test/resources/01-A_Hard_Day_s_Night.lab 
-start	end	root	bass	C	Db	D	Eb	E	F	Gb	G	Ab	A	Bb	B
-0.0	2.9632	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-2.9632	6.126	7	7	1	0	1	0	0	1	0	1	0	0	0	0
-[...]
-143.9829	151.7163	5	5	1	0	0	0	0	1	0	1	0	1	0	0
-151.7163	155.342	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+$ sh add_pitch_class_sets.sh |head -n 5
+start	end	label	root	bass	C	Db	D	Eb	E	F	Gb	G	Ab	A	Bb	B
+0.0	2.9632	N	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+2.9632	6.126	G:sus4(b7)	7	7	1	0	1	0	0	1	0	1	0	0	0	0
+6.126	6.9944	G	7	7	0	0	1	0	0	0	0	1	0	0	0	1
+6.9944	7.8364	C	0	0	1	0	0	0	1	0	0	1	0	0	0	0
 ```
 
 ### API

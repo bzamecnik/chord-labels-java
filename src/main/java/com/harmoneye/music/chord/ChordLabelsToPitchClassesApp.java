@@ -17,11 +17,12 @@ public class ChordLabelsToPitchClassesApp {
         InputStreamReader reader = new InputStreamReader(new FileInputStream(
             fileName));
         List<TimedChordLabel> labels = new ChordLabels().parseTimedChords(reader);
-        System.out.println("start\tend\troot\tbass\tC\tDb\tD\tEb\tE\tF\tGb\tG\tAb\tA\tBb\tB");
+        System.out.println("start\tend\tlabel\troot\tbass\tC\tDb\tD\tEb\tE\tF\tGb\tG\tAb\tA\tBb\tB");
         for (TimedChordLabel label : labels) {
             System.out.print(label.getStartTime());
             System.out.print("\t" + label.getEndTime());
             ChordLabel chordLabel = label.getChordLabel();
+            System.out.print("\t" + chordLabel.getTitle());
             System.out.print("\t" + chordLabel.getRoot());
             System.out.print("\t" + chordLabel.getBass());
             for (Integer tone : chordLabel.getTonesAsBinarySet()) {
