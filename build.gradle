@@ -47,15 +47,17 @@ idea.module {
 	buildDir.listFiles({d, f -> f != "generated-src"} as FilenameFilter).each {excludeDirs += it}
 }
 
+mainClassName = 'com.harmoneye.music.chord.ChordLabelsToPitchClassesApp'
+
 run {
     if (project.hasProperty('file')){
         args(file)
     }
-    main = 'com.harmoneye.music.chord.ChordLabelsToPitchClassesApp'
+    main = mainClassName
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.harmoneye.music.chord.ChordLabelsToPitchClassesApp'
+        attributes 'Main-Class': mainClassName
     }
 }
