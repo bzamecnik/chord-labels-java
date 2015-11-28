@@ -25,17 +25,20 @@ public class ChordLabelsReader extends ChordLabelsBaseListener {
 		s.put("aug", tones(4, 8));
 		s.put("maj7", tones(4, 7, 11));
 		s.put("min7", tones(3, 7, 10));
-		s.put("7", tones(4, 7, 10));
 		s.put("dim7", tones(3, 6, 9));
 		s.put("hdim7", tones(3, 6, 10));
 		s.put("minmaj7", tones(3, 7, 11));
 		s.put("maj6", tones(4, 7, 9));
 		s.put("min6", tones(3, 7, 9));
-		s.put("9", tones(4, 7, 10, 2));
 		s.put("maj9", tones(4, 7, 11, 2));
 		s.put("min9", tones(3, 7, 10, 2));
 		s.put("sus4", tones(5, 7));
 		s.put("sus2", tones(2, 7));
+
+		s.put("7", tones(4, 7, 10));
+		s.put("9", tones(4, 7, 10, 2));
+		s.put("11", tones(4, 7, 10, 2, 5));
+		s.put("13", tones(4, 7, 10, 2, 5, 9));
 		SHORTHANDS = s;
 	}
 
